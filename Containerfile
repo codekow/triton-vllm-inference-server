@@ -15,7 +15,7 @@ VOLUME [ "/models" ]
 RUN chmod -R u+x ${STI_SCRIPTS_PATH} && \
     chgrp -R 0 ${STI_SCRIPTS_PATH} && \
     chmod -R g=u ${STI_SCRIPTS_PATH} && \
-    mkdir -p ${APP_ROOT}/{bin,src} && \
+    mkdir -p ${APP_ROOT}/bin ${APP_ROOT}/src && \
     chmod -R u+x ${APP_ROOT}/bin && \
     chgrp -R 0 ${APP_ROOT} && \
     chmod -R g=u ${APP_ROOT}
@@ -33,4 +33,4 @@ ENV HOME=${APP_ROOT}/src
 EXPOSE 8000 8001 8002
 
 # ENTRYPOINT /opt/nvidia/nvidia_entrypoint.sh
-CMD ${STI_SCRIPTS_PATH}/run
+CMD [ "${STI_SCRIPTS_PATH}/run" ]
